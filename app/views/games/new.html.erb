@@ -1,0 +1,14 @@
+<h1>New Game</h1>
+<p>What is the longest word you can find?</p>
+
+
+<div class=" m-2 letters-container">
+  <%= @letters.chars.map { |letter| content_tag(:span, letter, class: 'letter') }.join.html_safe %>
+</div>
+
+<form action="score" method="post" data-turbo="false">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="text" name="mot" placeholder="">
+  <input name="letters" type="hidden" value="<%=@letters%>" />
+  <input type="submit" value="Play">
+</form>
